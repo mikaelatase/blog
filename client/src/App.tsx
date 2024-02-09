@@ -7,12 +7,12 @@ import Router from "./Router.tsx"; // Import Router instead of Router.tsx
 function App() {
     return (
         <Provider store={store}>
-            <div className="max-w-screen-xl mx-auto px-2">
+             <div className="max-w-screen-xl mx-auto px-2 bg-gray-50">
                 <Navbar />
-                <main className="mt-8 min-h-screen">
+                <main className="mt-8 min-h-screen bg-gray-50">
                     <Router /> 
                 </main>
-                <footer>Footer</footer>
+                <footer className="bg-gray-50">Footer</footer>
             </div>
         </Provider>
     );

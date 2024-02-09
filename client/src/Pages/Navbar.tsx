@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <header className="flex items-center justify-between py-4 border-b">
+        <header className="flex items-center justify-between py-4 border-b bg-gray-50">
             <Link to="/" className="px-2 lg:px-0 uppercase font-bold text-purple-800">
                 BlogSphere
             </Link>
@@ -14,9 +14,9 @@ const Navbar = () => {
                 <li className="px-2 md:px-4">
                     <Link to="/about" className="text-gray-500 font-semibold hover:text-purple-500"> About </Link>
                 </li>
-                <li className="px-2 md:px-4">
+                {/* <li className="px-2 md:px-4">
                     <Link to="/press" className="text-gray-500 font-semibold hover:text-purple-500"> Press </Link>
-                </li>
+                </li> */}
                 <li className="px-2 md:px-4">
                     <Link to="/contact" className="text-gray-500 font-semibold hover:text-purple-500"> Contact </Link>
                 </li>
