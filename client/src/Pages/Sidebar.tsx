@@ -1,4 +1,5 @@
 import React from 'react'
+import SidebarItem from './SidebarItem.tsx'
 
 function Sidebar() {
   return (
@@ -6,40 +7,23 @@ function Sidebar() {
     {/* topics */}
     <div className="mb-4">
       <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2"> Popular Topics </h5>
-      <ul>
-        <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-          <a href="#" className="flex items-center text-gray-600 cursor-pointer">
-            <span className="inline-block h-4 w-4 bg-yellow-700 mr-3"></span>
-            Travel
-            <span className="text-gray-500 ml-auto">31 articles</span>
-            <i className='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
-          </a>
-        </li>
-        <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-          <a href="#" className="flex items-center text-gray-600 cursor-pointer">
-            <span className="inline-block h-4 w-4 bg-teal-700 mr-3"></span>
-            Interior Design
-            <span className="text-gray-500 ml-auto">21 articles</span>
-            <i className='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
-          </a>
-        </li>
-        <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-          <a href="#" className="flex items-center text-gray-600 cursor-pointer">
-            <span className="inline-block h-4 w-4 bg-indigo-400 mr-3"></span>
-            DIY
-            <span className="text-gray-500 ml-auto">34 articles</span>
-            <i className='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
-          </a>
-        </li>
-        <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-          <a href="#" className="flex items-center text-gray-600 cursor-pointer">
-            <span className="inline-block h-4 w-4 bg-emerald-200 mr-3"></span>
-            News
-            <span className="text-gray-500 ml-auto">13 articles</span>
-            <i className='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
-          </a>
-        </li>
-      </ul>
+
+      <SidebarItem 
+        articleTag = "Travel"
+        articleNumber = "31 articles"
+      />
+       <SidebarItem 
+        articleTag = " Interior Design"
+        articleNumber = "22 articles"
+      />
+       <SidebarItem 
+        articleTag = " DIY"
+        articleNumber = "34 articles"
+      />
+       <SidebarItem 
+        articleTag = "News"
+        articleNumber = "13 articles"
+      />
     </div>
 
     {/* divider */}
