@@ -1,7 +1,7 @@
 import React from "react";
-import Banner from "./Banner.tsx";
+import Banner from "../components/Assets/Banner.tsx";
 import PostForm from "../components/Post/PostForm.tsx";
-import Sidebar from "./Sidebar.tsx";
+import Sidebar from "../components/Assets/Sidebar.tsx";
 
 const Home = () => {
     return (

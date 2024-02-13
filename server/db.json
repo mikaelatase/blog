@@ -1,18 +1,6 @@
 {
     "blogs": [
         {
-            "id": 1,
-            "title": "Meta debuts generative AI features for advertisers",
-            "image": "https://techcrunch.com/wp-content/uploads/2023/10/meta-gen-ai-ads.jpg?w=430&h=230&crop=1",
-            "category": "AI",
-            "author": "Sarah Perez",
-            "authorPic": "https://randomuser.me/api/portraits/women/90.jpg",
-            "published_date": "October 4, 2023",
-            "reading_time": "5 minutes",
-            "content": "Meta announced today it is rolling out its first generative AI features for advertisers, allowing them to use AI to create backgrounds, expand images, and generate multiple versions of ad text...",
-            "tags": ["Blogging", "Writing", "AI"]
-        },
-        {
             "id": 3,
             "title": "Making wearable medical devices more patient-friendly with Professor Esther Rodriguez-Villegas from Acurable",
             "image": "https://techcrunch.com/wp-content/uploads/2022/05/found-2022-featured.jpg?w=430&h=230&crop=1",
@@ -529,7 +517,7 @@
             "tags": ["Startups", "Writing"]
         },
         {
-            "id": 45,
+            "id": 46,
             "title": "Ten Key Labs wants to simplify managing equity for startups",
             "image": "https://techcrunch.com/wp-content/uploads/2022/09/GettyImages-1359478309.jpg?w=430&h=230&crop=1",
             "category": "Startups",

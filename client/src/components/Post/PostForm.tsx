@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PostItem from './PostItem.tsx';
-import postDetails from '../Assets/postDetails.js';
+import postDetails from '../Assets/data/postDetails.js';
 
 function createPostItem(postItem) {
   return (

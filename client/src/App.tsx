@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Pages/Navbar.tsx";
+import Navbar from "./components/Assets/Navbar.tsx";
 import { Provider } from 'react-redux';
 import { store } from "./redux/store.js";
 import Router from "./Router.tsx"; // Import Router instead of Router.tsx
