@@ -25,9 +25,13 @@
 }
 
 .pagination li.activerPagination {
-    background: rgb(255, 106, 0);
+    background: rgb(147 51 234);
     border-radius: 4px;
-    colro: #fff;
+    color: #fff;
+}
+
+.pagination a.activerPagination {
+    color: #eee;
 }
 
 .active-button{

@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../App.css"
 
 const Pagination = ({onPageChange, currentPage, blogs, pageSize}) => {
 
@@ -7,7 +8,7 @@ const Pagination = ({onPageChange, currentPage, blogs, pageSize}) => {
     const renderPaginationLink = () => {
         return Array.from({length: totalPages}, (_,i) => i + 1).map((pageNumber) => (
             <li className={pageNumber === currentPage ? "activerPagination" : ""} key={pageNumber}>
-                <a href="#" onClick={() => onPageChange(pageNumber)}>{pageNumber}</a>
+                <a href="#" className={pageNumber === currentPage ? "activerPagination" : ""} onClick={() => onPageChange(pageNumber)}>{pageNumber}</a>
             </li>
         ))
     }

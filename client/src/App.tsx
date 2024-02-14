@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "./components/Assets/Navbar.tsx";
 import { Provider } from 'react-redux';
 import { store } from "./redux/store.js";
-import Router from "./Router.tsx"; // Import Router instead of Router.tsx
+import Router from "./Router.tsx";
+import Footer from "./components/Assets/Footer.jsx";
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
                 <main className="mt-8 min-h-screen bg-gray-50">
                     <Router /> 
                 </main>
-                <footer className="bg-gray-50">Footer</footer>
+                <Footer />
             </div>
         </Provider>
     );
