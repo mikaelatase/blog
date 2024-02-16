@@ -111,7 +111,7 @@ const Footer = () => {
             </div>
             </div>
 
-            <div className="flex flex-col justify-between pt-5 pb-10 border-t border-gray-500 sm:flex-row">
+            <div className="flex flex-col justify-between pt-5 pb-3 border-t border-gray-500 sm:flex-row">
                 <p className="text-sm text-gray-400 ">Copyright ⓒ {currentYear} | All Rights Reserved.</p>
                 <div className="flex items-center mt-4 space-x-4 sm:mt-0">
                     <a href="#" className="text-gray-400 transition-all duration-300 hover:text-purple-400"><FaTwitter className="h-6 w-6"/></a>
