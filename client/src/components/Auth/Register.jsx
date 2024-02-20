@@ -11,6 +11,8 @@ const Register = () => {
   })
 
   const [err, setError] = useState(null);
+  
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,10 +23,12 @@ const Register = () => {
     e.preventDefault();
     try {
       await axios.post("/auth/register", inputs);
+      navigate("/login")
     } catch (err) {
-      setError(err.response.data);
+      setError(err.response.data.message);
     }
   };
+  
 
   return (
     <section className="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -44,7 +48,7 @@ const Register = () => {
               </svg>
             </div>
             <button className="bg-purple-800 rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={handleSubmit}>SIGN UP</button>
-            {err && <p>{err}</p>}
+            {err && <p className='text-red-600'>{err}</p>}
           </form>
 
           <div className="mt-6 grid grid-cols-3 items-center text-gray-400">

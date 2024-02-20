@@ -3,6 +3,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import cookieParser from "cookie-parser";
+import { db } from "./db.js";
 
 const app =  express();
 
@@ -15,6 +16,11 @@ app.use("/server/users", userRoutes);
 app.use("/server/posts", postRoutes);
 
 
-app.listen(8800, () => {
-    console.log("Server running on port 8800");
+app.get("/", (req, res) => {
+    res.json("Hello this is the backend");
+})
+
+
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
 })
