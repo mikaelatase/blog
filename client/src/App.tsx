@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "./components/Assets/Navbar.tsx";
+import Navbar from "./components/Assets/Navbar.jsx";
 import { Provider } from 'react-redux';
-import { store } from "./redux/store.js";
+import { store } from "./store/store.js";
 import Router from "./Router.tsx";
 import Footer from "./components/Assets/Footer.jsx";
 

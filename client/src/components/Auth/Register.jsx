@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RegisterImage from "./astronaut_login.png";
+import RegisterImage from "../../components/Assets/images/astronaut_login.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -32,8 +32,8 @@ const Register = () => {
 
   return (
     <section className="bg-gray-50 min-h-screen flex items-center justify-center">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
-        <div className="md:w-1/2 px-8 md:px-16">
+      <div className="bg-gray-100 flex rounded-2xl shadow-lg md:w-full max-w-3xl p-5 items-center flex-col md:flex-row ">
+        <div className="w-full md:w-1/2 px-8 md:px-16">
           <h2 className="font-bold text-2xl text-purple-800">Create a new account</h2>
           <p className="text-xs mt-4 text-purple-800">Already have an account? <button className="underline hover:scale-105 duration-300"><Link to="/login">Sign in</Link></button></p>
 
@@ -68,8 +68,8 @@ const Register = () => {
           </button>
         </div>
 
-        <div className="md:block hidden w-1/2">
-          <img className="rounded-2xl" src= {RegisterImage} />
+        <div className="w-full md:w-1/2">
+          <img className="rounded-2xl flex-row" src= {RegisterImage} alt="Register" />
         </div>
       </div>
     </section>

@@ -1,12 +1,11 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useContext } from "react";
+import React, { useState } from 'react';
+import LoginImage from "../../components/Assets/images/astronaut_login.png";
 import { Link, useNavigate } from "react-router-dom";
-import LoginImage from "./astronaut_login.png";
-
+import axios from "axios";
+import { AuthContext } from '../../context/authContext.js';
+import { useContext } from 'react';
 
 const Login = () => {
-
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -16,6 +15,8 @@ const Login = () => {
   
   const navigate = useNavigate();
 
+  const { login } = useContext(AuthContext);
+
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -24,7 +25,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/auth/login", inputs);
+      await login(inputs)
       navigate("/")
     } catch (err) {
       setError(err.response.data.message);
@@ -32,9 +33,9 @@ const Login = () => {
   };
 
   return (
-    <section className="bg-gray-50 min-h-screen flex items-center justify-center">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
-        <div className="md:w-1/2 px-8 md:px-16">
+    <section className="bg-gray-50 min-h-screen flex items-center justify-center ">
+      <div className="bg-gray-100 flex rounded-2xl shadow-lg md:w-full max-w-3xl p-5 items-center flex-col md:flex-row">
+        <div className="w-full md:w-1/2 px-8 md:px-16">
           <h2 className="font-bold text-2xl text-purple-800">Login</h2>
           <p className="text-xs mt-4 text-purple-800">If you are already a member, easily log in</p>
 
@@ -48,7 +49,7 @@ const Login = () => {
               </svg>
             </div>
             <button className="bg-purple-800 rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={handleSubmit}>Login</button>
-            {err && <p className='text-red-600'>{err}</p>}
+            {err && <p className = "text-red-600" >{err}</p>}
           </form>
 
           <div className="mt-6 grid grid-cols-3 items-center text-gray-400">
@@ -77,8 +78,8 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="md:block hidden w-1/2">
-          <img className="rounded-2xl" src= {LoginImage} />
+        <div className="w-full md:w-1/2">
+          <img className="rounded-2xl" src= {LoginImage} alt="Login" />
         </div>
       </div>
     </section>

@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import Login from './components/Auth/Login.jsx';
 import Register from './components/Auth/Register.jsx';
-import Home from './Pages/Home.tsx';
-import Error from './Pages/ErrorPage.jsx';
-import About from './Pages/About.tsx';
-import Blogs from './Pages/Blogs.jsx';
-import Contact from './Pages/Contact.tsx';
+import Home from './pages/Home.tsx';
+import Error from './pages/ErrorPage.jsx';
+import About from './pages/About.tsx';
+import Blogs from './pages/Blogs.jsx';
+import Contact from './pages/Contact.tsx';
+import SinglePage from './pages/SinglePage.jsx';
 
 const Router = () => {
     return (
@@ -20,6 +21,7 @@ const Router = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/register" element={<Register />} />
+                <Route path="/blogs/:id" element={<SinglePage />}/>
                 <Route path="*" element={<Error />} />
             </Routes>
     );

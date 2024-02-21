@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ErrorImage from "./ErrorImage.png";
+import ErrorImage from "../components/Assets/images/ErrorImage.png";
 
 const Error = () => {
   const navigate = useNavigate();
