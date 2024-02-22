@@ -20,8 +20,8 @@ function createBannerElement(bannerElement) {
 
 function Banner() {
   return (
-    <div className="block md:flex w-full relative rounded md:space-x-2 px-2 lg:p-0">
-      <div className="mb-4 md:mb-0 w-full relative rounded inline-block">
+    <div className="block md:flex w-full relative rounded md:space-x-2 px-2 lg:p-0 ob">
+      <div className="mb-4 md:mb-0 w-full relative rounded inline-block ">
         {bannerDetails.map(createBannerElement)}
       </div>
     </div>

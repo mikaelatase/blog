@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext.js';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
+    const { currentUser, logout } = useContext(AuthContext);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -16,11 +17,7 @@ const Navbar = () => {
         {path: "/about", link: "About"},
         {path: "/blogs", link: "Blogs"},
         {path: "/contact", link: "Contact"},
-        {path: "/login", link: "Login"},
-        {path: "/register", link: "Register"}
     ];
-
-    const {currentUser, logout} = useContext(AuthContext);
 
     return (
         <header className="flex items-start justify-between py-4 border-b bg-gray-50 px-4">
@@ -40,11 +37,27 @@ const Navbar = () => {
                         <NavLink onClick={toggleMenu} className="text-gray-500 font-semibold hover:text-purple-500" to={path}>{link}</NavLink>
                     </li>
                 ))}
+
+                {currentUser ? (
+                    <>
+                        <li className="px-2 md:px-4">
+                            <span className="text-gray-500 font-semibold hover:text-purple-500 cursor-pointer" onClick={logout}>Logout</span>
+                        </li>
+                        <li className="px-2 md:px-4">
+                            <span className="text-gray-500 font-semibold hover:text-purple-500 cursor-pointer">{currentUser.username}</span>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li className="px-2 md:px-4">
+                            <NavLink className="text-gray-500 font-semibold hover:text-purple-500" to="/login">Login</NavLink>
+                        </li>
+                        <li className="px-2 md:px-4">
+                            <NavLink className="text-gray-500 font-semibold hover:text-purple-500" to="/register">Register</NavLink>
+                        </li>
+                    </>
+                )}
             </ul>
-
-            {/* <span className = "text-gray-500 font-semibold hover:text-purple-500 cursor-pointer">{currentUser?.username}</span>
-
-            {currentUser ? (<span className = "text-gray-500 font-semibold hover:text-purple-500 cursor-pointer" onClick={logout}>Logout</span>) : (<NavLink className="text-gray-500 font-semibold hover:text-purple-500" to = "/login">Login</NavLink>)} */}
         </header>
     );
 }
