@@ -1,13 +1,15 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
 import Sidebar from "../components/Assets/Sidebar.tsx";
+import ParticleRing from "../components/Assets/ParticleRing.jsx";
 
 const SinglePage = () => {
   return (
     <div>
-       <div className="py-40 bg-purple-800 text-center text-gray-200 px4-">
+       {/* <div className="py-40 bg-purple-800 text-center text-gray-200 px4-">
         <h2 className="text-5xl lg:text-7xl leading-snug font-bold mb-5">Single Blog Page</h2>
-      </div>
+      </div> */}
+      <ParticleRing titlePage = "Single Blog Page"/>
 
       {/* blog details */}
       <div className = "max-w-7xl mx-auto my-12 flex flex-col md:flex-row">
