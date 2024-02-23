@@ -6,9 +6,6 @@ import ParticleRing from "../components/Assets/ParticleRing.jsx";
 const SinglePage = () => {
   return (
     <div>
-       {/* <div className="py-40 bg-purple-800 text-center text-gray-200 px4-">
-        <h2 className="text-5xl lg:text-7xl leading-snug font-bold mb-5">Single Blog Page</h2>
-      </div> */}
       <ParticleRing titlePage = "Single Blog Page"/>
 
       {/* blog details */}

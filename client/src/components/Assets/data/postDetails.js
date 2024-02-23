@@ -23,7 +23,7 @@ const postDetails = [
         blogsDescription: "We had a lovely Christmas together and our kids received some amazing gifts from friends and family. However, once the tree was taken down and the new items were stowed away, we realized our house was packed to the brim with toys. Every single cabinet and closet seemed to be bursting with stuff!",
         blogsAuthor: "Barnaby Ray",
         creationDate: "18 September",
-        backgroundImageUrl: "https://thediyplaybook.com/wp-content/uploads/2024/01/organize-purge-toys-20.jpg",
+        backgroundImageUrl: "https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.1280.853.suffix/1689786863909.jpeg",
         authorImage: "https://unavatar.io/github/1stevengrant"
       }  
   ];

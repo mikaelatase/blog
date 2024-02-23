@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext.js';
+import Search from '../Search.jsx';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
@@ -31,7 +32,11 @@ const Navbar = () => {
                 </button>
             </div>
 
-            <ul className={`md:flex gap-8 text-lg ${isMenuOpen ? "block" : "hidden"}`}>
+            <div className="md:block hidden">
+                <Search />
+            </div>
+
+            <ul className={`md:flex gap-5 text-md ${isMenuOpen ? "block" : "hidden"}`}>
                 {navItems.map(({ path, link }) => (
                     <li className="px-2 md:px-4" key={path}>
                         <NavLink onClick={toggleMenu} className="text-gray-500 font-semibold hover:text-purple-500" to={path}>{link}</NavLink>

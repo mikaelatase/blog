@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBlogs } from "./blogsAPI";
+import { getBlogs } from "./blogsAPI.js";
 
 const initialState = {
     blogs: [],
