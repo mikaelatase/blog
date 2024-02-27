@@ -1,6 +1,6 @@
-import publicAxios from "../../../components/publicAxios.js"
+import axios from "axios";
 
 export const getBlogs = async() => {
-    const response = await publicAxios.getBlogs('/blogs');
+    const response = await axios.getBlogs('/blogs');
     return response.data;
 }

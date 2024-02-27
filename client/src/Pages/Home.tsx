@@ -1,7 +1,7 @@
 import React from "react";
-import Banner from "../components/Assets/Banner.tsx";
+import Banner from "../components/Assets/Banner/Banner.tsx";
 import PostForm from "../components/Post/PostForm.tsx";
-import Sidebar from "../components/Assets/Sidebar.tsx";
+import Sidebar from "../components/Assets/Sidebar/Sidebar.tsx";
 
 const Home = () => {
     return (
@@ -12,7 +12,6 @@ const Home = () => {
             <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
 
             <PostForm />
-
 
             <Sidebar />
             </div>

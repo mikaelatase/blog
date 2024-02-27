@@ -1,6 +1,6 @@
 import React from 'react';
 import BannerElement from './BannerElement.tsx';
-import bannerDetails from './data/bannerDetails.js';
+import bannerDetails from '../data/bannerDetails.js';
 
 function createBannerElement(bannerElement) {
   return (

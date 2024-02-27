@@ -3,7 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "./utils.js";
 
-const ParticleRing = (props) => {
+const ExtraDesign = (props) => {
   return (
     <div className="relative">
       <Canvas
@@ -18,7 +18,7 @@ const ParticleRing = (props) => {
         <pointLight position={[-30, 0, -30]} power={10.0} />
         <PointCircle />
       </Canvas>
-
+      
       <h1 className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-slate-200 text-2xl md:text-5xl pointer-events-none leading-snug font-bold">
       {props.titlePage}
       </h1>
@@ -60,4 +60,4 @@ const Point = ({ position, color }) => {
   );
 };
 
-export default ParticleRing;
+export default ExtraDesign;

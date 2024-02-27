@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import Sidebar from "../components/Assets/Sidebar.tsx";
-import ParticleRing from "../components/Assets/ParticleRing.jsx";
+import Sidebar from "../components/Assets/Sidebar/Sidebar.tsx";
+import ParticleRing from "../components/Assets/ExtraAssets/ExtraDesign.jsx";
+import axios from "axios";
 
 const SinglePage = () => {
   return (

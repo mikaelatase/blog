@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./components/Assets/Navbar.jsx";
+import Navbar from "./components/Assets/Navbar/Navbar.jsx";
 import { Provider } from 'react-redux';
 import { store } from "./store/store.js";
 import Router from "./Router.tsx";
-import Footer from "./components/Assets/Footer.jsx";
+import Footer from "./components/Assets/Footer/Footer.jsx";
 
 function App() {
     return (

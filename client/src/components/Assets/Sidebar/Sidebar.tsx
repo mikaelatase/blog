@@ -13,11 +13,11 @@ function Sidebar() {
         articleNumber = "31 articles"
       />
        <SidebarItem 
-        articleTag = " Interior Design"
+        articleTag = "Interior Design"
         articleNumber = "22 articles"
       />
        <SidebarItem 
-        articleTag = " DIY"
+        articleTag = "DIY"
         articleNumber = "34 articles"
       />
        <SidebarItem 

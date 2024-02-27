@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import BlogCard from './BlogCard.jsx';
-import Pagination from './Pagination.jsx';
-import CategorySelection from './CategorySelection.jsx';
+import Pagination from '../Pagination/Pagination.jsx';
+import CategorySelection from '../Category/CategorySelection.jsx';
+import axios from 'axios';
 
 const BlogPage = () => {
 
@@ -11,22 +12,37 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  useEffect (() => {
-    async function fetchBlogs() {
-      //let url = `http://localhost:5000/blogs?page=${currentPage}&limit=${pageSize}`; 
-      let url = `http://localhost:5000/blogs?`; 
+  // useEffect (() => {
+  //   async function fetchBlogs() {
+  //     //let url = `http://localhost:5000/blogs?page=${currentPage}&limit=${pageSize}`; 
+  //     let url = `http://localhost:5000/blogs?`; 
 
-      //filter by category
-      if(selectedCategory){
-        url += `&category=${selectedCategory}`;
+  //     //filter by category
+  //     if(selectedCategory){
+  //       url += `&category=${selectedCategory}`;
+  //     }
+
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     setBlogs(data);
+  //   }
+
+  //   fetchBlogs();
+  // }, [currentPage, pageSize, selectedCategory])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log(selectedCategory);
+        const res = await axios.get('/blogs', {
+          params: { category: selectedCategory }
+        });
+        setBlogs(res.data);
+      } catch (err) {
+        console.log(err);
       }
-
-      const response = await fetch(url);
-      const data = await response.json();
-      setBlogs(data);
-    }
-
-    fetchBlogs();
+    };    
+    fetchData();
   }, [currentPage, pageSize, selectedCategory])
 
   //page changing btn

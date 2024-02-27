@@ -45,7 +45,7 @@ export const pointsInner = Array.from(
 ).map((num) => {
     const randomRadius = randomFromInterval(MIN_RADIUS, MAX_RADIUS);
     const randomAngle = Math.random() * Math.PI * 2;
-
+    
     const x = Math.cos(randomAngle) * randomRadius;
     const y = Math.sin(randomAngle) * randomRadius;
     const z = randomFromInterval(-DEPTH, DEPTH);

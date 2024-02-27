@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useContext } from 'react';
-import { AuthContext } from '../../context/authContext.js';
-import Search from '../Search.jsx';
+import { AuthContext } from '../../../context/authContext.js';
+import Search from '../ExtraAssets/Search.jsx';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
