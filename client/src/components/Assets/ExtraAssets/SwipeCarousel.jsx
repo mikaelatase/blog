@@ -1,133 +1,94 @@
-import React, { useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useRef } from "react";
 
-const imgs = [
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-  "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
-];
-
-const ONE_SECOND = 1000;
-const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 50;
-
-const SPRING_OPTIONS = {
-  type: "spring",
-  mass: 3,
-  stiffness: 400,
-  damping: 50,
+const SwipeCarousel = () => {
+  return (
+    <div className="bg-neutral-800">
+      <HorizontalScrollCarousel />
+    </div>
+  );
 };
 
-export const SwipeCarousel = () => {
-  const [imgIndex, setImgIndex] = useState(0);
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-  const dragX = useMotionValue(0);
-
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      const x = dragX.get();
-
-      if (x === 0) {
-        setImgIndex((pv) => {
-          if (pv === imgs.length - 1) {
-            return 0;
-          }
-          return pv + 1;
-        });
-      }
-    }, AUTO_DELAY);
-
-    return () => clearInterval(intervalRef);
-  }, []);
-
-  const onDragEnd = () => {
-    const x = dragX.get();
-
-    if (x <= -DRAG_BUFFER && imgIndex < imgs.length - 1) {
-      setImgIndex((pv) => pv + 1);
-    } else if (x >= DRAG_BUFFER && imgIndex > 0) {
-      setImgIndex((pv) => pv - 1);
-    }
-  };
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <div className="relative overflow-hidden bg-purple-800 py-8">
-      <motion.div
-        drag="x"
-        dragConstraints={{
-          left: 0,
-          right: 0,
-        }}
+    <section ref={targetRef} className="relative h-[150vh] bg-purple-800">
+      <div className="sticky top-0 flex h-50 items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-4">
+          {cards.map((card) => {
+            return <Card card={card} key={card.id} />;
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const Card = ({ card }) => {
+  return (
+    <div
+      key={card.id}
+      className="group relative h-[350px] w-[350px] overflow-hidden bg-neutral-200"
+    >
+      <div
         style={{
-          x: dragX,
+          backgroundImage: `url(${card.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
-        animate={{
-          translateX: `-${imgIndex * 100}%`,
-        }}
-        transition={SPRING_OPTIONS}
-        onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing"
-      >
-        <Images imgIndex={imgIndex} />
-      </motion.div>
-
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
-      <GradientEdges />
+        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+      ></div>
+      <div className="absolute inset-0 z-10 grid place-content-center">
+        <p className="bg-gradient-to-br from-purple/20 to-purple/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
+          {card.title}
+        </p>
+      </div>
     </div>
   );
 };
 
-const Images = ({ imgIndex }) => {
-  return (
-    <>
-      {imgs.map((imgSrc, idx) => {
-        return (
-          <motion.div
-            key={idx}
-            style={{
-              backgroundImage: `url(${imgSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            animate={{
-              scale: imgIndex === idx ? 0.95 : 0.85,
-            }}
-            transition={SPRING_OPTIONS}
-            className="aspect-video w-screen shrink-0 rounded-xl bg-neutral-800 object-cover"
-          />
-        );
-      })}
-    </>
-  );
-};
+export default SwipeCarousel
 
-const Dots = ({ imgIndex, setImgIndex }) => {
-  return (
-    <div className="mt-4 flex w-full justify-center gap-2">
-      {imgs.map((_, idx) => {
-        return (
-          <button
-            key={idx}
-            onClick={() => setImgIndex(idx)}
-            className={`h-3 w-3 rounded-full transition-colors ${
-              idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
-            }`}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-const GradientEdges = () => {
-  return (
-    <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-r from-neutral-950/50 to-neutral-950/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-l from-neutral-950/50 to-neutral-950/0" />
-    </>
-  );
-};
+const cards = [
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Paris",
+    id: 1,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Nice",
+    id: 2,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Lyon",
+    id: 3,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Marseille",
+    id: 4,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Monaco",
+    id: 5,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Bordeaux",
+    id: 6,
+  },
+  {
+    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    title: "Montpellier",
+    id: 7,
+  },
+];
