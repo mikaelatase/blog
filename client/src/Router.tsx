@@ -9,6 +9,7 @@ import About from './pages/About.tsx';
 import Blogs from './pages/Blogs.jsx';
 import Contact from './pages/Contact.tsx';
 import SinglePage from './pages/SinglePage.jsx';
+import WriteBlog from './components/Assets/Blog/WriteBlog.jsx';
 
 const Router = () => {
     return (
@@ -22,6 +23,7 @@ const Router = () => {
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/register" element={<Register />} />
                 <Route path="/blogs/:id" element={<SinglePage />}/>
+                <Route path="/upload" element={<WriteBlog />}/>
                 <Route path="*" element={<Error />} />
             </Routes>
     );

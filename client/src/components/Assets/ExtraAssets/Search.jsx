@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = () => {
   return (
-    <form className="relative flex items-center h-7 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+    <form className="relative flex items-center h-7 rounded-lg focus-within:shadow-lg bg-white overflow-hidden ">
       <div className="grid place-items-center h-full w-28 text-purple-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
