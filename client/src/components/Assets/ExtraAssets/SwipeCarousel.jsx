@@ -18,7 +18,7 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[150vh] bg-purple-800">
+    <section ref={targetRef} className="relative h-[150vh] bg-purple-700">
       <div className="sticky top-0 flex h-50 items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {
@@ -62,32 +62,32 @@ const cards = [
     id: 1,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://lp-cms-production.imgix.net/2023-02/3cb45f6e59190e8213ce0a35394d0e11-nice.jpg",
     title: "Nice",
     id: 2,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://media.cntraveler.com/photos/57ec402c196e3f9630631fa4/16:9/w_2560%2Cc_limit/Saint_Georges_in_Vieux-Lyon_creditTristan_Deschamps.jpg",
     title: "Lyon",
     id: 3,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://theplanetd.com/images/Best-Things-to-do-in-Marseille-France.jpg",
     title: "Marseille",
     id: 4,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://traveladvo.com/wp-content/uploads/2020/04/Monaco-France-Everything-You-Need-to-Know.jpg",
     title: "Monaco",
     id: 5,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://www.meganstarr.com/wp-content/uploads/2023/02/Best-things-to-do-in-Bordeaux-France_124255273.jpg",
     title: "Bordeaux",
     id: 6,
   },
   {
-    url: "https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg",
+    url: "https://imageio.forbes.com/specials-images/imageserve/871336494/Montpellier-city-in-France/960x0.jpg?format=jpg&width=960",
     title: "Montpellier",
     id: 7,
   },
