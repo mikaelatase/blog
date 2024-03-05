@@ -1,19 +1,8 @@
-// import express from "express";
-// import { register, login, logout } from "../controllers/auth.js";
-
-// const router = express.Router();
-
-// router.post("/register", register);
-// router.post("/login", login);
-// router.post("/logout", logout);
-
-// export default router;
-
 import express from "express";
 import AuthController from "../controllers/auth.js";
 
 class AuthRouter {
-    
+
     constructor() {
         this.router = express.Router();
         this.authController = new AuthController();
