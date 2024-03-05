@@ -34,7 +34,7 @@ const BlogPage = () => {
     const fetchData = async () => {
       try {
         console.log(selectedCategory);
-        const res = await axios.get('/blogs', {
+        const res = await axios.get('/posts/blogs', {
           params: { category: selectedCategory }
         });
         setBlogs(res.data);

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../App.tsx"
+import "../../../App.css"
 
 const Pagination = ({onPageChange, currentPage, blogs, pageSize}) => {
 

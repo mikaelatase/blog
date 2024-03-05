@@ -11,13 +11,17 @@ class PostController {
         const q = req.query.category
             ? "SELECT * FROM posts WHERE category = ?"
             : "SELECT * FROM posts";
-
+    
         this.db.query(q, [req.query.category], (err, data) => {
-            if (err) return res.status(500).send(err);
-
+            if (err) {
+                console.error("Error executing SQL query:", err);
+                return res.status(500).send("Internal Server Error");
+            }
+    
             return res.status(200).json(data);
         });
     }
+    
 
     getPost(req, res) {
         res.json("from controller");

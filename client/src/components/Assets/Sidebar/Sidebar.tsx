@@ -21,7 +21,7 @@ function Sidebar() {
         articleNumber = "34 articles"
       />
        <SidebarItem 
-        articleTag = "News"
+        articleTag = "VIP"
         articleNumber = "13 articles"
       />
     </div>

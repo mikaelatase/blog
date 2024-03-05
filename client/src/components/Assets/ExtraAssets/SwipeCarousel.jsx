@@ -87,8 +87,8 @@ const cards = [
     id: 6,
   },
   {
-    url: "https://imageio.forbes.com/specials-images/imageserve/871336494/Montpellier-city-in-France/960x0.jpg?format=jpg&width=960",
-    title: "Montpellier",
+    url: "https://www.dabblinginjetlag.com/wp-content/uploads/Is-Dijon-Worth-Visiting.jpg",
+    title: "Dijon",
     id: 7,
   },
 ];

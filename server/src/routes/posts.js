@@ -10,7 +10,7 @@ class PostRouter {
     }
 
     setupRoutes() {
-        this.router.get("/posts", (req, res) => this.postController.getPosts(req, res));
+        this.router.get("/blogs", (req, res) => this.postController.getPosts(req, res));
         this.router.get("/post", (req, res) => this.postController.getPost(req, res));
         this.router.post("/post", (req, res) => this.postController.addPost(req, res));
         this.router.delete("/post", (req, res) => this.postController.deletePost(req, res));

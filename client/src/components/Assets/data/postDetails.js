@@ -1,6 +1,6 @@
 const postDetails = [
     {
-      id: 1,
+      id: 3,
       blogsTitle: "Watch Usher’s 2024 Super Bowl Halftime Show With Alicia Keys, Ludacris, More",
       blogsDescription: "Usher took the stage for the 2024 Super Bowl Halftime Show, and you can watch what went down below. The singer brought out Alicia Keys, Ludacris, Lil Jon, H.E.R., and Jermaine Dupri during his show, which he performed amid dozens of dancers and gymnasts in sparkly getups and feathered wings.",
       blogsAuthor: "Zachary Blackburn",
@@ -9,7 +9,7 @@ const postDetails = [
       authorImage: "https://randomuser.me/api/portraits/men/86.jpg"
     },
     {
-        id: 2,
+        id: 4,
         blogsTitle: "Beyoncé Announces New Album Act II, Shares Two New Songs: Listen",
         blogsDescription: "Beyoncé has announced a new album; Act II arrives March 29. She’s also graced us with two new songs: “Texas Hold ’Em” and “16 Carriages.” Listen to those below, and scroll down for Bey’s teaser clip.",
         blogsAuthor: "Marilyn Gates",
@@ -18,7 +18,7 @@ const postDetails = [
         authorImage: "https://randomuser.me/api/portraits/women/54.jpg"
       },
       {
-        id: 3,
+        id: 5,
         blogsTitle: "How to Purge, Declutter, and Organize Kids’ Toys",
         blogsDescription: "We had a lovely Christmas together and our kids received some amazing gifts from friends and family. However, once the tree was taken down and the new items were stowed away, we realized our house was packed to the brim with toys. Every single cabinet and closet seemed to be bursting with stuff!",
         blogsAuthor: "Barnaby Ray",
