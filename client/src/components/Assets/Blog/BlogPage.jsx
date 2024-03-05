@@ -12,24 +12,6 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  // useEffect (() => {
-  //   async function fetchBlogs() {
-  //     //let url = `http://localhost:5000/blogs?page=${currentPage}&limit=${pageSize}`; 
-  //     let url = `http://localhost:5000/blogs?`; 
-
-  //     //filter by category
-  //     if(selectedCategory){
-  //       url += `&category=${selectedCategory}`;
-  //     }
-
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  //     setBlogs(data);
-  //   }
-
-  //   fetchBlogs();
-  // }, [currentPage, pageSize, selectedCategory])
-
   useEffect(() => {
     const fetchData = async () => {
       try {
