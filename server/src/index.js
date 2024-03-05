@@ -1,26 +1,48 @@
 import express from "express";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/posts.js";
+import PostRouter from "./routes/posts.js";
 import cookieParser from "cookie-parser";
-import { db } from "./db.js";
+import AuthRouter from "./routes/auth.js";
 
-const app =  express();
+class Server {
+    constructor() {
+        this.app = express();
+        this.port = 5000;
+        this.start();
+        this.initExpressMiddlewares();
+        this.initRoutes();
+        this.get();
+    }
 
-//express server middleware that allows us to send any json file using a client
-app.use(express.json());
-app.use(cookieParser());
+    start() {
+        this.app.listen(this.port, () => {
+            console.log(`Server running on port ${this.port}`);
+        });
+    }
 
-app.use("/server/auth", authRoutes);
-app.use("/server/users", userRoutes);
-app.use("/server/posts", postRoutes);
+    initExpressMiddlewares() {
+        this.app.use(express.json());
+        this.app.use(cookieParser());
+    }
 
+    initRoutes() {
+        this.app.use("/server/users", userRoutes);
 
-app.get("/", (req, res) => {
-    res.json("Hello this is the backend");
-})
+        // Initialize AuthRouter
+        const authRouter = new AuthRouter();
+        this.app.use("/server/auth", authRouter.getRouter());
 
+        // Initialize PostRouter
+        const postRouter = new PostRouter();
+        this.app.use("/server/posts", postRouter.getRouter());
+    }
 
-app.listen(5000, () => {
-    console.log("Server running on port 5000");
-})
+    get() {
+        this.app.get("/", (req, res) => {
+            res.json("Hello this is the backend");
+        });
+    }
+}
+
+new Server();

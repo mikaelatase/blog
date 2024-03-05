@@ -1,10 +1,34 @@
+// import express from "express";
+// import { register, login, logout } from "../controllers/auth.js";
+
+// const router = express.Router();
+
+// router.post("/register", register);
+// router.post("/login", login);
+// router.post("/logout", logout);
+
+// export default router;
+
 import express from "express";
-import { register, login, logout } from "../controllers/auth.js";
+import AuthController from "../controllers/auth.js";
 
-const router = express.Router();
+class AuthRouter {
+    
+    constructor() {
+        this.router = express.Router();
+        this.authController = new AuthController();
+        this.setupRoutes();
+    }
 
-router.post("/register", register);
-router.post("/login", login);
-router.post("/logout", logout);
+    setupRoutes() {
+        this.router.post("/register", (req, res) => this.authController.register(req, res));
+        this.router.post("/login", (req, res) => this.authController.login(req, res));
+        this.router.post("/logout", (req, res) => this.authController.logout(req, res));
+    }
 
-export default router;
+    getRouter() {
+        return this.router;
+    }
+}
+
+export default AuthRouter;

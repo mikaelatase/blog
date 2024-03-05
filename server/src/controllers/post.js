@@ -1,29 +1,72 @@
-import { db } from "../db.js";
+// import DbConnection from "../database/db.js";
 
-export const getPosts = (req, res) => {
-    const q = req.query.category
-    ? "SELECT * FROM posts WHERE category = ?"
-    :  "SELECT * FROM posts"
+// const connectDB = new DbConnection();
+// const db = connectDB.getConnection();
 
-    db.query(q, [req.query.category], (err, data) => {
-        if(err) return res.status(500).send(err)
+// export const getPosts = (req, res) => {
+//     const q = req.query.category
+//     ? "SELECT * FROM posts WHERE category = ?"
+//     :  "SELECT * FROM posts"
 
-        return res.status(200).json(data);
-    })
+//     db.query(q, [req.query.category], (err, data) => {
+//         if(err) return res.status(500).send(err)
+
+//         return res.status(200).json(data);
+//     })
+// }
+
+// export const getPost = (req, res) => {
+//     res.json("from controller");
+// }
+
+// export const addPost = (req, res) => {
+//     res.json("from controller");
+// }
+
+// export const deletePost = (req, res) => {
+//     res.json("from controller");
+// }
+
+// export const updatePost = (req, res) => {
+//     res.json("from controller");
+// }
+
+import DbConnection from "../database/db.js";
+
+class PostController {
+    
+    constructor() {
+        this.dbConnection = new DbConnection();
+        this.db = this.dbConnection.getConnection();
+    }
+
+    getPosts(req, res) {
+        const q = req.query.category
+            ? "SELECT * FROM posts WHERE category = ?"
+            : "SELECT * FROM posts";
+
+        this.db.query(q, [req.query.category], (err, data) => {
+            if (err) return res.status(500).send(err);
+
+            return res.status(200).json(data);
+        });
+    }
+
+    getPost(req, res) {
+        res.json("from controller");
+    }
+
+    addPost(req, res) {
+        res.json("from controller");
+    }
+
+    deletePost(req, res) {
+        res.json("from controller");
+    }
+
+    updatePost(req, res) {
+        res.json("from controller");
+    }
 }
 
-export const getPost = (req, res) => {
-    res.json("from controller");
-}
-
-export const addPost = (req, res) => {
-    res.json("from controller");
-}
-
-export const deletePost = (req, res) => {
-    res.json("from controller");
-}
-
-export const updatePost = (req, res) => {
-    res.json("from controller");
-}
+export default PostController;
