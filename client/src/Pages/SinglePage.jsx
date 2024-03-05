@@ -28,20 +28,12 @@ const SinglePage = () => {
             </a>
           </div>
 
-          {/* <img
-            src="https://worldofwanderlust.com/wp-content/uploads/2022/04/Paris-World-of-Wanderlust25-scaled.jpg"
-            className="w-full object-cover lg:rounded"
-            style={{ height: "28em" }}
-            alt="Blog Cover"
-          /> */}
-
           <SwipeCarousel />
 
         </div>
 
         <div className="flex flex-col lg:flex-row lg:space-x-12">
           <div className="px-4 lg:px-0 mt-8 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-            {/* ... Existing code ... */}
             <br /> <br />
             <p>
               France is the most popular tourist destination in the world. Known
