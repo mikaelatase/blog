@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const getBlogs = async() => {
-    const response = await axios.getBlogs('/blogs');
+    const response = await axios.get('/posts/blogs');
     return response.data;
 }

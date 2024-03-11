@@ -2,30 +2,47 @@ import React, { useEffect, useState } from 'react'
 import BlogCard from './BlogCard.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import CategorySelection from '../Category/CategorySelection.jsx';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBlogs } from '../../../store/features/blogs/blogsSlice.js';
 
 const BlogPage = () => {
 
-  const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 12; //blogs per page
+  // const [blogs, setBlogs] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const pageSize = 12; //blogs per page
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 12;
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get('/posts/blogs', {
+          // params: { category: selectedCategory }
+  //       });
+  //       setBlogs(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };    
+  //   fetchData();
+  // }, [currentPage, pageSize, selectedCategory])
+
+  const dispatch = useDispatch();
+  const { blogs, isLoading, isError, error } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log(selectedCategory);
-        const res = await axios.get('/posts/blogs', {
-          params: { category: selectedCategory }
-        });
-        setBlogs(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };    
-    fetchData();
-  }, [currentPage, pageSize, selectedCategory])
+    dispatch(fetchBlogs());
+  }, [dispatch, currentPage]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (isError) {
+    return <div>Error: {error}</div>;
+  }
 
   //page changing btn
   const handlePageChange = (pageNumber) => {

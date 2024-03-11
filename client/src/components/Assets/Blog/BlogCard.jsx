@@ -10,14 +10,14 @@ const BlogCard = ({blogs, currentPage, selectedCategory, pageSize}) => {
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
       {
-        filteredBlogs.map((blog) => 
-          <Link to = {`/blogs/${blog.id}`} key={blog.id} className="p-5 shadow-lg rounded cursor-pointer">
+        filteredBlogs.map(({id, image, title, author, published_date}) => 
+          <Link to = {`/blogs/${id}`} key={id} className="p-5 shadow-lg rounded cursor-pointer">
             <div>
-              <img src={blog.image} alt="" className="w-full" />
+              <img src={image} alt="" className="w-full" />
             </div>
-            <h3 className="mt-4 mb-2 font-bold hover:text-purple-500 cursor-pointer">{blog.title}</h3>
-            <p className="mb-2 text-gray-500"><span className='inline-flex items-center mr-2'><FaUser/></span>{blog.author}</p>
-            <p className="text-sm text-gray-500">Published: {blog.published_date}</p>
+            <h3 className="mt-4 mb-2 font-bold hover:text-purple-500 cursor-pointer">{title}</h3>
+            <p className="mb-2 text-gray-500"><span className='inline-flex items-center mr-2'><FaUser/></span>{author}</p>
+            <p className="text-sm text-gray-500">Published: {published_date}</p>
           </Link>
         )
       }
