@@ -19,10 +19,11 @@ const Router = () => {
                 <Route path="/home" element={<Home />} /> 
                 <Route path="/about" element={<About />} />
                 <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:category" element={<Blogs />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/register" element={<Register />} />
-                <Route path="/blogs/:id" element={<SinglePage />}/>
+                <Route path="/blog/:id" element={<SinglePage />}/>
                 <Route path="/upload" element={<WriteBlog />}/>
                 <Route path="*" element={<Error />} />
             </Routes>

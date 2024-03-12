@@ -11,7 +11,7 @@ const BlogCard = ({blogs, currentPage, selectedCategory, pageSize}) => {
     <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
       {
         filteredBlogs.map(({id, image, title, author, published_date}) => 
-          <Link to = {`/blogs/${id}`} key={id} className="p-5 shadow-lg rounded cursor-pointer">
+          <Link to = {`/blog/${id}`} key={id} className="p-5 shadow-lg rounded cursor-pointer">
             <div>
               <img src={image} alt="" className="w-full" />
             </div>

@@ -9,9 +9,9 @@ class PostController {
 
     getPosts(req, res) {
         const q = req.query.category
-            ? "SELECT * FROM posts WHERE category = ?"
-            : "SELECT * FROM posts";
-    
+            ? "SELECT * , u.`username` as author FROM posts p JOIN users u ON p.uid = u.id WHERE category =?"
+            : "SELECT * , u.`username` as author FROM posts p JOIN users u ON p.uid = u.id";
+
         this.db.query(q, [req.query.category], (err, data) => {
             if (err) {
                 console.error("Error executing SQL query:", err);

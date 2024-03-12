@@ -8,12 +8,10 @@ import { fetchBlogs } from '../../../store/features/blogs/blogsSlice.js';
 const BlogPage = () => {
 
   // const [blogs, setBlogs] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const pageSize = 12; //blogs per page
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 12;
+  const pageSize = 9;
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -33,8 +31,8 @@ const BlogPage = () => {
   const { blogs, isLoading, isError, error } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    dispatch(fetchBlogs());
-  }, [dispatch, currentPage]);
+    dispatch(fetchBlogs(selectedCategory));
+  }, [dispatch, currentPage, pageSize, selectedCategory]);
 
   if (isLoading) {
     return <div>Loading...</div>;

@@ -9,8 +9,8 @@ const initialState = {
 };
 
 // async thunk
-export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-    const blogs = await getBlogs();
+export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (category) => {
+    const blogs = await getBlogs(category);
     return blogs;
 });
 
