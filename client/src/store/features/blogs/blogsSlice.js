@@ -27,7 +27,6 @@ const blogsSlice = createSlice({
             state.length = 0;
         })
         .addCase(fetchBlogs.fulfilled, (state, action) => {
-            console.log("Fulfilled Payload:", action.payload);
             state.isLoading = false;
             state.blogs = action.payload;
             state.length = action.payload.length;
