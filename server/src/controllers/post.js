@@ -9,8 +9,8 @@ class PostController {
 
     getPosts(req, res) {
         const q = req.query.category
-            ? "SELECT * , u.`username` as author FROM posts p JOIN users u ON p.uid = u.id WHERE category =?"
-            : "SELECT * , u.`username` as author FROM posts p JOIN users u ON p.uid = u.id";
+            ? "SELECT p.id, p.title, p.`desc`, p.image, p.published_date, p.category, p.author_notes as notes, u.`username` as author FROM posts p JOIN users u ON p.uid = u.id WHERE category =?"
+            : "SELECT p.id, p.title, p.`desc`, p.image, p.published_date, p.category, p.author_notes as notes, u.`username` as author FROM posts p JOIN users u ON p.uid = u.id";
 
         this.db.query(q, [req.query.category], (err, data) => {
             if (err) {
@@ -25,7 +25,7 @@ class PostController {
 
     getPost(req, res) {
         const q =
-            "SELECT p.id, `username` as author, `title`, p.`desc`, p.image, u.img AS authorPic, `category`,`published_date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id =?"
+            "SELECT p.`id`, p.`author_notes` as notes, `username` as author, `title`, p.`desc`, p.`image`, u.`img` AS authorPic, `category`,`published_date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id =?"
         this.db.query(q, [req.params.id], (err, data) => {
             if (err) {
                 console.error("Error executing SQL query:", err);

@@ -3,6 +3,7 @@ import { getBlogs } from "./blogsAPI.js";
 
 const initialState = {
     blogs: [],
+    length: 0,
     isLoading: false,
     isError: false,
     error: "",
@@ -14,7 +15,7 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (category) 
     return blogs;
 });
 
- const blogsSlice = createSlice({
+const blogsSlice = createSlice({
     name: "blogs",
     initialState,
     extraReducers: (builder) => {
@@ -22,20 +23,23 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (category) 
         .addCase(fetchBlogs.pending, (state) => {
             state.isError = false;
             state.isLoading = true;
-            state.blogs=[]
+            state.blogs = [];
+            state.length = 0;
         })
         .addCase(fetchBlogs.fulfilled, (state, action) => {
+            console.log("Fulfilled Payload:", action.payload);
             state.isLoading = false;
-            state.blogs=action.payload;
+            state.blogs = action.payload;
+            state.length = action.payload.length;
         })
         .addCase(fetchBlogs.rejected, (state, action) => {
             state.isLoading = false;
             state.blogs = [];
             state.isError = true;
             state.error = action.error?.message;
+            state.length = 0;
         });
-    
     }
- })
+});
 
- export default blogsSlice.reducer;
+export default blogsSlice.reducer;

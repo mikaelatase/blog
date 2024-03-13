@@ -4,7 +4,7 @@ import {FaTwitter, FaFacebook, FaInstagram} from "react-icons/fa6"
 const Footer = () => {
     const currentYear = new Date().getFullYear();
   return (
-    <div className="bg-purple-800">
+    <div className="bg-purple-800 mt-4">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-4">
             <div className="grid mb-8 lg:grid-cols-6">
                 <div className="grid grid-cols-2 gap-5 lg:col-span-4 md:grid-cols-4">

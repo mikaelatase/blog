@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import ParticleRing from "../components/Assets/ExtraAssets/ExtraDesign.jsx";
-import axios from "axios";
 import { AiOutlineArrowRight, AiOutlineHeart } from "react-icons/ai";
 import { BiCommentDetail } from "react-icons/bi";
-import PopularBlog from "../components/Assets/Blog/PopularBlog.jsx";
 import SwipeCarousel from "../components/Assets/ExtraAssets/SwipeCarousel.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlog } from "../store/features/singleBlog/blogSlice.js";
@@ -31,7 +29,7 @@ if (isError) {
   return <div>Error: {error}</div>;
 }
 
-const {title, desc, image, author, authorPic, category } = blog || {};
+const {title, desc, image, author, authorPic, category, notes } = blog || {};
 
   return (
     <div>
@@ -51,7 +49,9 @@ const {title, desc, image, author, authorPic, category } = blog || {};
             </a>
           </div>
 
-          <SwipeCarousel />
+          {/* <SwipeCarousel /> */}
+
+          <img src={image} className="w-full object-cover lg:rounded" style={{ height: "28em" }}/>
 
         </div>
 
@@ -82,10 +82,7 @@ const {title, desc, image, author, authorPic, category } = blog || {};
                 </div>
               </div>
               <p className="text-gray-700 py-3">
-                Stuart writes about travelling and describes some of the most visited spots of France. 
-                He has been to France multiple times and has a lot of experience in travelling. He is also a travel blogger.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit molestiae et rem repellat id. Rem veritatis aliquam fugit, 
-                illo dolore pariatur quisquam voluptatibus aspernatur facere rerum! Nemo nesciunt voluptate ipsa.
+                {notes}
               </p>
             </div>
           </div>

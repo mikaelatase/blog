@@ -1,9 +1,10 @@
 import React from 'react'
 import "../../../App.css"
+import { LENGTH } from '../Blog/BlogPage';
 
-const Pagination = ({onPageChange, currentPage, blogs, pageSize}) => {
-
-    const totalPages = Math.ceil(blogs.length / pageSize);
+const Pagination = ({onPageChange, currentPage, pageSize}) => {   
+    
+    const totalPages = Math.ceil(LENGTH / pageSize);
 
     const renderPaginationLink = () => {
         return Array.from({length: totalPages}, (_,i) => i + 1).map((pageNumber) => (
