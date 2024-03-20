@@ -6,7 +6,7 @@ function createBannerElement(bannerElement) {
   return (
     <div className="w-1/2 relative rounded inline-block">
        <BannerElement
-      key = {bannerElement.id}  //its used for react so it can render elements in the right order, its not a props
+      key = {bannerElement.id}  //its used for react so it can render elements in the right order
       bannerImage = {bannerElement.bannerImage}
       bannerTag = {bannerElement.bannerTag}
       bannerTitle = {bannerElement.bannerTitle}

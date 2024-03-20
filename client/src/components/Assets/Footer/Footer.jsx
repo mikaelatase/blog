@@ -60,19 +60,16 @@ const Footer = () => {
 
                     {/* third category */}
                     <div>
-                        <p className="font-medium tracking-wide text-gray-300">Category</p>
+                        <p className="font-medium tracking-wide text-gray-300">Contact Us</p>
                         <ul className="mt-2 space-y-2">
                             <li>
-                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">News</a>
+                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">Email</a>
                             </li>
                             <li>
-                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">World</a>
+                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">Phone</a>
                             </li>
                             <li>
-                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">Games</a>
-                            </li>
-                            <li>
-                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">References</a>
+                                <a href="/" className="text-gray-400 transition-colors duration-300 hover:text-purple-700 ">Address</a>
                             </li>
                         </ul>
                     </div>

@@ -37,7 +37,7 @@ class AuthController {
             const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password);
 
             if (!isPasswordCorrect)
-                return res.status(400).json({ message: "Wrong username or password!" });
+                return res.status(400).json({ message: "Wrong password!" });
 
             const token = jwt.sign({ id: data[0].id }, "jwtkey");
             const { password, ...other } = data[0];

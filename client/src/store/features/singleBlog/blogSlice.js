@@ -8,7 +8,6 @@ const initialState = {
     error: "",
 };
 
-// async thunk
 export const fetchBlog = createAsyncThunk("blog/fetchBlog", async (id) => {
     const blog = await getBlog(id);
     return blog;

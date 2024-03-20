@@ -22,9 +22,9 @@ const Navbar = () => {
 
     return (
         <header className="flex items-start justify-between py-4 border-b bg-gray-50 px-4">
-            <NavLink to="/" className="px-2 lg:px-0 uppercase font-bold text-purple-800">
+            <a href="/" className="px-2 lg:px-0 uppercase font-bold text-purple-800">
                 BlogSphere
-            </NavLink>
+            </a>
             
             <div className="md:hidden">
                 <button onClick={toggleMenu} className="cursor-pointer">

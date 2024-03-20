@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBlogs } from '../../../store/features/blogs/blogsSlice.js';
 
 export let LENGTH = 0;
+const pageSize = 9;
+
 
 const BlogPage = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 9;
 
   const dispatch = useDispatch();
   const { blogs, isLoading, isError, error, length } = useSelector((state) => state.blogs);
@@ -22,6 +23,7 @@ const BlogPage = () => {
   useEffect(() => {
     dispatch(fetchBlogs(selectedCategory));
   }, [dispatch, currentPage, pageSize, selectedCategory]);
+
 
   if (isLoading) {
     return <div>Loading...</div>;

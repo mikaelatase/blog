@@ -43,12 +43,14 @@ function Sidebar() {
       {/* divider */}
       <div className="border border-dotted"></div>
 
-      <div>
-      <Link to = "/blogs">
-      <Button text = "Go to the blogs"></Button>
-      </Link>
-    </div>
-
+      <div className="flex flex-row gap-4">
+        <Link to="/blogs">
+          <Button text="Go to the blogs" />
+        </Link>
+        <Link to="/blogs/upload">
+          <Button text="Upload a new blog" />
+        </Link>
+      </div>
     </div>
   );
 }

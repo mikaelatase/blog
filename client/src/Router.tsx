@@ -5,9 +5,9 @@ import Login from './components/Auth/Login.jsx';
 import Register from './components/Auth/Register.jsx';
 import Home from './pages/Home.tsx';
 import Error from './pages/ErrorPage.jsx';
-import About from './pages/About.tsx';
+import About from './pages/About.jsx';
 import Blogs from './pages/Blogs.jsx';
-import Contact from './pages/Contact.tsx';
+import Contact from './pages/Contact.jsx';
 import SinglePage from './pages/SinglePage.jsx';
 import WriteBlog from './components/Assets/Blog/WriteBlog.jsx';
 
@@ -24,7 +24,7 @@ const Router = () => {
                 <Route path="/login" element={<Login />} /> 
                 <Route path="/register" element={<Register />} />
                 <Route path="/blog/:id" element={<SinglePage />}/>
-                <Route path="/upload" element={<WriteBlog />}/>
+                <Route path="/blogs/upload" element={<WriteBlog />}/>
                 <Route path="*" element={<Error />} />
             </Routes>
     );

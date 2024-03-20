@@ -6,8 +6,6 @@ const Blogs = () => {
   return (
     <div>
       <ExtraDesign titlePage = " Blog Page"/>
-
-      {/* all blogs container */}
       <div className="max-w-7xl mx-auto">
         <BlogPage />
       </div>
