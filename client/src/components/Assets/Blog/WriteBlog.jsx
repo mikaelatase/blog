@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from '../ExtraAssets/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPost } from '../../../store/features/uploadBlog/postsSlice';
 
 const WriteBlog = () => {
-
-  // const location = useLocation();
-  // console.log(location);
   
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState(null);
   const [imagePath, setImagePath] = useState("");
   const [category, setCategory] = useState("");
-  const [published_date, setPublishedDate] = useState(new Date().toISOString().slice(0, 10));
 
   const dispatch = useDispatch();
 
@@ -54,7 +50,7 @@ const WriteBlog = () => {
     data.append('desc', desc);
     data.append('image', image);
     data.append('category', category);
-    data.append('published_date', published_date);
+
 
     try {
       await dispatch(addPost(data));

@@ -15,6 +15,9 @@ class AuthController {
             if (err) return res.status(500).json({ message: "Internal server error" });
             if (data.length) return res.status(409).json({ message: "User already exists!" });
 
+            if(req.body.password.length < 8) 
+            return res.status(400).json({ message: "Password must be at least 8 characters long." });
+
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(req.body.password, salt);
 

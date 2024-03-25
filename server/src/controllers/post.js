@@ -44,33 +44,34 @@ class PostController {
 
 
     addPost(req, res) {
-
         const token = req.cookies.access_token;
         if (!token) return res.status(401).json("Not authenticated!");
       
         jwt.verify(token, "jwtkey", (err, userInfo) => {
-          if (err) return res.status(403).json("Token is not valid!");
-      
-          const q =
-            "INSERT INTO posts(`title`, `desc`, `image`, `category`, `published_date`,`uid`) VALUES (?)";
+            if (err) return res.status(403).json("Token is not valid!");
             
-          const values = [
-            req.body.title,
-            req.body.desc,
-            req.body.image,
-            req.body.category,
-            req.body.published_date,
-            userInfo.id,
-          ];
-          console.log(values);
+            if (!req.file) return res.status(400).json("No image uploaded");
+          
+            const q =
+                "INSERT INTO posts(`title`, `desc`, `image`, `category`, `published_date`,`uid`) VALUES (?)";
 
-      
-          this.db.query(q, [values], (err, data) => {
-            if (err) return res.status(500).json(err);
-            return res.json("Post has been created.");
-        });
+            const values = [
+                req.body.title,
+                req.body.desc,
+                req.file.filename, 
+                req.body.category,
+                new Date(),
+                userInfo.id,
+            ];
+            console.log(values);
+    
+            this.db.query(q, [values], (err, data) => {
+                if (err) return res.status(500).json(err);
+                return res.json("Post has been created.");
+            });
         });
     }
+    
 
     deletePost(req, res) {
         res.json("from controller");
