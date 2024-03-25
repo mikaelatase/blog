@@ -44,16 +44,15 @@ const WriteBlog = () => {
 
   const createNewPost = async (e) => {
     e.preventDefault();
-
-    const data = new FormData();
-    data.append('title', title);
-    data.append('desc', desc);
-    data.append('image', image);
-    data.append('category', category);
-
-
+  
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('desc', desc);
+    formData.append('image', image);
+    formData.append('category', category);
+  
     try {
-      await dispatch(addPost(data));
+      await dispatch(addPost(formData));
       setTitle("");
       setDesc("");
       setImage(null);
@@ -63,6 +62,7 @@ const WriteBlog = () => {
       console.error("Error adding post:", error);
     }
   }
+  
 
   return (
     <form onSubmit={createNewPost}>

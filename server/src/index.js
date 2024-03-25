@@ -29,13 +29,13 @@ class Server {
     initRoutes() {
         this.app.use("/server/users", userRoutes);
 
-        // Initialize AuthRouter
         const authRouter = new AuthRouter();
         this.app.use("/server/auth", authRouter.getRouter());
 
-        // Initialize PostRouter
         const postRouter = new PostRouter();
         this.app.use("/server/posts", postRouter.getRouter());
+
+        this.app.use('/server/uploads', express.static('./uploads'));
     }
 
     get() {

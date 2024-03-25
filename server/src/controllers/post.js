@@ -55,10 +55,12 @@ class PostController {
             const q =
                 "INSERT INTO posts(`title`, `desc`, `image`, `category`, `published_date`,`uid`) VALUES (?)";
 
+                const imageUrl = "../uploads/" + req.file.filename;
+
             const values = [
                 req.body.title,
                 req.body.desc,
-                req.file.filename, 
+                imageUrl,
                 req.body.category,
                 new Date(),
                 userInfo.id,
