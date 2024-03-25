@@ -1,39 +1,52 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import ParticleRing from "../components/Assets/ExtraAssets/ExtraDesign.jsx";
-import { AiOutlineArrowRight, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineHeart, AiOutlineDelete } from "react-icons/ai";
 import { BiCommentDetail } from "react-icons/bi";
 import SwipeCarousel from "../components/Assets/ExtraAssets/SwipeCarousel.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBlog } from "../store/features/singleBlog/blogSlice.js";
+import { AuthContext } from "../context/authContext.js";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBlog, deleteBlogPost } from "../store/features/singleBlog/blogSlice.js";
 
 const SinglePage = () => {
   const { id } = useParams();
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { blog, isLoading, isError, error } = useSelector(
     (state) => state.blog
-);
+  );
 
-const dispatch = useDispatch();
-useEffect(() => {
-  dispatch(fetchBlog(id));
-  window.scrollTo(0, 0);
-}, [dispatch, id]);
+  const dispatch = useDispatch();
 
-if (isLoading) {
-  return <div>Loading...</div>;
-}
+  useEffect(() => {
+    dispatch(fetchBlog(id));
+    window.scrollTo(0, 0);
+  }, [dispatch, id]);
 
-if (isError) {
-  return <div>Error: {error}</div>;
-}
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-const {title, desc, image, author, authorPic, category, notes } = blog || {};
+  if (isError) {
+    return <div>Error: {error}</div>;
+  }
+
+  const { title, desc, image, author, authorPic, category, notes } = blog || {};
+
+  const isAuthor = currentUser && (author === currentUser.username || blog.uid === currentUser.id);
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      dispatch(deleteBlogPost(id));
+      navigate("/blogs");
+    }
+  };
 
   return (
     <div>
-      <ParticleRing titlePage="Single Blog Page"/>
+      <ParticleRing titlePage="Single Blog Page" />
 
       <article className="mt-8">
         <div className="mb-4 md:mb-0 w-full mx-auto relative">
@@ -51,16 +64,24 @@ const {title, desc, image, author, authorPic, category, notes } = blog || {};
 
           {/* <SwipeCarousel /> */}
 
-          <img src={image} className="w-full object-cover lg:rounded" style={{ height: "28em" }}/>
-
+          <img
+            src={image}
+            className="w-full object-cover lg:rounded"
+            style={{ height: "28em" }}
+          />
         </div>
 
+        {isAuthor && (
+          <div className="flex items-center mt-7 text-gray-500 cursor-pointer " onClick={handleDelete}>
+            <AiOutlineDelete className=" " />
+            <span className="text-sm">Delete post</span>
+          </div>
+        )}
+
         <div className="flex flex-col lg:flex-row lg:space-x-12">
-          <div className="px-4 lg:px-0 mt-8 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
+          <div className="px-4 lg:px-0 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
             <br /> <br />
-            <p>
-              {desc}
-            </p>
+            <p>{desc}</p>
           </div>
 
           <div className="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
@@ -81,9 +102,7 @@ const {title, desc, image, author, authorPic, category, notes } = blog || {};
                   </p>
                 </div>
               </div>
-              <p className="text-gray-700 py-3">
-                {notes}
-              </p>
+              <p className="text-gray-700 py-3">{notes}</p>
             </div>
           </div>
         </div>
@@ -112,4 +131,4 @@ const {title, desc, image, author, authorPic, category, notes } = blog || {};
   );
 }
 
-export default SinglePage
+export default SinglePage;

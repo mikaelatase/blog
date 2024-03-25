@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getBlog } from "./blogAPI.js";
+import { deleteBlog } from "./blogAPI.js";
 
 const initialState = {
     blog: {},
@@ -12,6 +13,12 @@ export const fetchBlog = createAsyncThunk("blog/fetchBlog", async (id) => {
     const blog = await getBlog(id);
     return blog;
 });
+
+export const deleteBlogPost = createAsyncThunk("blog/deleteBlogPost", async (id) => {
+      const response = await deleteBlog(id);
+      return response.data;
+    }
+  );
 
  const blogSlice = createSlice({
     name: "blog",
@@ -32,7 +39,20 @@ export const fetchBlog = createAsyncThunk("blog/fetchBlog", async (id) => {
             state.blog = {};
             state.isError = true;
             state.error = action.error?.message;
-        });
+        })
+        .addCase(deleteBlogPost.pending, (state) => {
+            state.isLoading = true;
+            state.isError = false;
+          })
+          .addCase(deleteBlogPost.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.blog = {};
+          })
+          .addCase(deleteBlogPost.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.error = action.error?.message;
+          });
     
     }
  })
